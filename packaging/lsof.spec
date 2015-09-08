@@ -5,7 +5,7 @@
 Name:           lsof
 Version:        4.82
 Release:        1
-License:        zlib
+License:        BSD-style
 Summary:        A utility which lists open files on a Linux/UNIX system
 Group:          Development/Debuggers
 
@@ -41,6 +41,8 @@ mkdir -p %{buildroot}%{_sbindir}
 install -p -m 0755 lsof %{buildroot}%{_prefix}/sbin
 mkdir -p %{buildroot}%{_mandir}/man8
 install -p lsof.8 %{buildroot}%{_mandir}/man8/
+mkdir -p %{buildroot}/usr/share/license
+cp LICENSE.lsof %{buildroot}/usr/share/license/%{name}
 
 %clean
 rm -rf %{buildroot}
@@ -50,4 +52,5 @@ rm -rf %{buildroot}
 %files
 %defattr(644,root,root,755)
 %attr(0755,root,root) %{_sbindir}/lsof
+/usr/share/license/%{name}
 
